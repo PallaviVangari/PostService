@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.PostBlog.Post.Model.Post;
 import com.PostBlog.Post.Service.KafkaProducerService;
 import com.PostBlog.Post.Service.PostService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 
 @RestController
 @RequestMapping("/api/post")
@@ -29,17 +28,12 @@ public class PostController {
 	private KafkaProducerService kafkaProducerService;
 	
 	@PostMapping("/createPost")
-	public void addPost(@RequestBody Post post) throws JsonProcessingException
+	public Post addPost(@RequestBody Post post)
 	{
-		postService.addPost(post);
+		var createdPost = postService.addPost(post);
 		kafkaProducerService.sendMessage(post,"tweet_created");
+		return createdPost;
 	}
-	
-	//@GetMapping
-	//public List<Post> getAllPosts()
-	//{
-	//	return postService.getPosts();
-	//}
 	
 	@GetMapping("/getUserPosts/{userId}")
 	public List<Post> getAllPostsByUserId(@PathVariable String userId)
@@ -48,7 +42,7 @@ public class PostController {
 	}
 	
 	@PutMapping("/updatePost/{userId}/{postId}")
-	public Optional<Post> updatePostById(@PathVariable String userId, @PathVariable String postId, @RequestBody Post post) throws JsonProcessingException
+	public Optional<Post> updatePostById(@PathVariable String userId, @PathVariable String postId, @RequestBody Post post)
 	{
 		var updatedPost = postService.updatePostByPostId(userId, postId, post);
 		if(updatedPost.isPresent())
@@ -60,7 +54,7 @@ public class PostController {
 	}
 	
 	@DeleteMapping("/deletePost/{userId}/{postId}")
-	public void deletePostByPostId(@PathVariable String userId, @PathVariable String postId) throws JsonProcessingException
+	public void deletePostByPostId(@PathVariable String userId, @PathVariable String postId)
 	{
 		var post = postService.getPostByPostId(postId);
 		var isPostDeleted = postService.deletePostByPostId(userId, postId);

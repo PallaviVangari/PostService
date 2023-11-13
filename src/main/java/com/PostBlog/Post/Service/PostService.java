@@ -14,17 +14,14 @@ public class PostService {
 
 	@Autowired
     private IPostDao repository;
-	//@Autowired
-	//private PostDao postDao;
-	public void addPost(Post post)
+	
+	public Post addPost(Post post)
 	{
-		//postDao.addPost(post);
-		repository.save(post);
+		return repository.save(post);
 	}
 	
 	public List<Post> getPosts()
 	{
-		//return postDao.getAllPosts();
 		return repository.findAll();
 	}
 	
@@ -35,7 +32,6 @@ public class PostService {
 	
 	public List<Post> getPostsByUserId(String userId)
 	{
-		//return postDao.getAllPostsOfUser(userId);
 		return repository.findByUserId(userId);
 	}
 	
@@ -68,7 +64,7 @@ public class PostService {
 		
 		if(postToBeDeleted.isPresent())
 		{
-			if(!userId.equals(postToBeDeleted.map(p -> p.getuserId()).orElse(null)))
+			if(!userId.equals(postToBeDeleted.map(p -> p.getUserId()).orElse(null)))
 				System.out.println("A user cannot delete other user's posts");
 			else
 			{
@@ -79,6 +75,5 @@ public class PostService {
 		else
 			System.out.println("Did not find the post to be deleted");
 		return false;
-		//postDao.deletePostById(postId);
 	}
 }

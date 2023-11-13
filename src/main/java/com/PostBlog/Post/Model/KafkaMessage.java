@@ -4,26 +4,27 @@ import java.time.Instant;
 
 public class KafkaMessage {
 
-	private String event_type;
+	private String eventType;
 	
 	private String userId;
 	
-	private String postId;
+	private String tweetId;
 	
 	private String authorId;
 	
 	private String content;
 	
-	private Instant createdDate;
+	private Instant timestamp;
 	
-	private Instant lastModifiedDate;
+	private Instant timestampUpdated;
+	
 
-	public String getEvent_type() {
-		return event_type;
+	public String getEventType() {
+		return eventType;
 	}
 
-	public void setEvent_type(String event_type) {
-		this.event_type = event_type;
+	public void setEventType(String eventType) {
+		this.eventType = eventType;
 	}
 
 	public String getUserId() {
@@ -34,12 +35,20 @@ public class KafkaMessage {
 		this.userId = userId;
 	}
 
-	public String getPostId() {
-		return postId;
+	public String getTweetId() {
+		return tweetId;
 	}
 
-	public void setPostId(String postId) {
-		this.postId = postId;
+	public void setTweetId(String tweetId) {
+		this.tweetId = tweetId;
+	}
+
+	public String getAuthorId() {
+		return authorId;
+	}
+
+	public void setAuthorId(String authorId) {
+		this.authorId = authorId;
 	}
 
 	public String getContent() {
@@ -50,27 +59,20 @@ public class KafkaMessage {
 		this.content = content;
 	}
 
-	public Instant getCreatedDate() {
-		return createdDate;
+	public Instant getTimestamp() {
+		return timestamp;
 	}
 
-	public void setCreatedDate(Instant createdDate) {
-		this.createdDate = createdDate;
+	public void setTimestamp(Instant timestamp) {
+		this.timestamp = timestamp;
 	}
 
-	public Instant getLastModifiedDate() {
-		return lastModifiedDate;
+	public Instant getTimestampUpdated() {
+		return timestampUpdated;
 	}
 
-	public void setLastModifiedDate(Instant lastModifiedDate) {
-		this.lastModifiedDate = lastModifiedDate;
+	public void setTimestampUpdated(Instant timestampUpdated) {
+		this.timestampUpdated = timestampUpdated;
 	}
 
-	public String getAuthorId() {
-		return authorId;
-	}
-
-	public void setAuthorId(String authorId) {
-		this.authorId = authorId;
-	}
 }

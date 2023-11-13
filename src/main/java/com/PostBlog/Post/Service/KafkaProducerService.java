@@ -18,9 +18,16 @@ public class KafkaProducerService {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendMessage(Post post, String eventType) throws JsonProcessingException {
+    public void sendMessage(Post post, String eventType) {
     	
-    	var json = mapper.writeValueAsJson(post, eventType);
+    	String json = null;
+		try {
+			json = mapper.writeValueAsJson(post, eventType);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Faced an exception while processing json");
+			e.printStackTrace();
+		}
         kafkaTemplate.send("my-topic", json);
     }
 }

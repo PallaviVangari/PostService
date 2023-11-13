@@ -28,13 +28,13 @@ public class Post {
 	{
 		return postId;
 	}
-	public String getuserId()
+	public String getUserId()
 	{
 		return userId;
 	}
-	public void setUserId(String val)
+	public void setUserId(String userId)
 	{
-		userId = val;
+		this.userId = userId;
 	}
 	public String getContent()
 	{

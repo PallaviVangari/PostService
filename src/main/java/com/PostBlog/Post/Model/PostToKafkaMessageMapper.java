@@ -31,12 +31,12 @@ public class PostToKafkaMessageMapper {
 	}
 	private void mapPostToKafkaMessage(Post post, KafkaMessage message, String eventType)
 	{
-		message.setEvent_type(eventType);
+		message.setEventType(eventType);
 		message.setContent(post.getContent());
-		 message.setCreatedDate(post.getCreatedDate());
-		 message.setPostId(post.getPostId());
-		 message.setLastModifiedDate(post.getLastModifiedDate());
-		 message.setUserId(post.getuserId());
+		 message.setTimestamp(post.getCreatedDate());
+		 message.setTweetId(post.getPostId());
+		 message.setTimestampUpdated(post.getLastModifiedDate());
+		 message.setUserId(post.getUserId());
 		 message.setAuthorId(post.getAuthorId());
 	}
 }
