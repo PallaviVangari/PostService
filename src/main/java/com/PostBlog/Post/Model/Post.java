@@ -1,12 +1,15 @@
 package com.PostBlog.Post.Model;
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "PostsDB")
+import lombok.experimental.FieldDefaults;
+
+@Document(collection = "Posts")
 public class Post {
 
 	@Id
@@ -17,10 +20,10 @@ public class Post {
 	private String authorId;
 
 	@CreatedDate
-    private Instant createdDate;
+    private LocalDateTime createdDate;
 
     @LastModifiedDate
-    private Instant lastModifiedDate;
+    private LocalDateTime lastModifiedDate;
 	
 	private String content;
 
@@ -44,11 +47,11 @@ public class Post {
 	{
 		this.content = content;
 	}
-	public Instant getCreatedDate() {
+	public LocalDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public Instant getLastModifiedDate() {
+    public LocalDateTime getLastModifiedDate() {
         return lastModifiedDate;
     }
 

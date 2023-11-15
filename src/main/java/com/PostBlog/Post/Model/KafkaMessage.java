@@ -1,6 +1,6 @@
 package com.PostBlog.Post.Model;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 public class KafkaMessage {
 
@@ -14,9 +14,9 @@ public class KafkaMessage {
 	
 	private String content;
 	
-	private Instant timestamp;
+	private LocalDateTime timestamp;
 	
-	private Instant timestampUpdated;
+	private LocalDateTime timestampUpdated;
 	
 
 	public String getEventType() {
@@ -59,19 +59,19 @@ public class KafkaMessage {
 		this.content = content;
 	}
 
-	public Instant getTimestamp() {
+	public LocalDateTime getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(Instant timestamp) {
+	public void setTimestamp(LocalDateTime timestamp) {
 		this.timestamp = timestamp;
 	}
 
-	public Instant getTimestampUpdated() {
+	public LocalDateTime getTimestampUpdated() {
 		return timestampUpdated;
 	}
 
-	public void setTimestampUpdated(Instant timestampUpdated) {
+	public void setTimestampUpdated(LocalDateTime timestampUpdated) {
 		this.timestampUpdated = timestampUpdated;
 	}
 
